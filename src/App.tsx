@@ -4,6 +4,11 @@ import "./App.css";
 import CharacterSheet from "./components/CharacterSheet";
 
 function App() {
+  const [level, setLevel] = useState(0);
+  // const [levelDropdown, setLevelDropdown] = useState(false);
+  const levelOptions = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+  ];
   const [character, setCharacter] = useState({
     Race: "Human",
     Level: 1,
@@ -86,6 +91,7 @@ function App() {
       Hitpoints: 56,
     });
     setDisplayCharacter(true);
+    console.log(level);
   };
 
   const onChaosClick = () => {
@@ -134,6 +140,22 @@ function App() {
   return (
     <>
       <h1 className="display-1">Another Tavern Rando</h1>
+
+      <select
+        name="level"
+        id="select-level"
+        className="form-select mb-4 w-25 d-flex align-items-center justify-content-center"
+        onChange={(event) => setLevel(parseInt(event.target.value))}
+      >
+        {levelOptions.map((value) => {
+          return (
+            <option className="border border-primary" key={value} value={value}>
+              {value}
+            </option>
+          );
+        })}
+      </select>
+
       <Button
         children="Optimized"
         color="success"
