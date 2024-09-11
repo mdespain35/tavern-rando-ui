@@ -144,7 +144,7 @@ function App() {
       <select
         name="level"
         id="select-level"
-        className="form-select mb-4 w-25 d-flex align-items-center justify-content-center"
+        className="form-select mb-4 w-25 mx-auto"
         onChange={(event) => setLevel(parseInt(event.target.value))}
       >
         {levelOptions.map((value) => {

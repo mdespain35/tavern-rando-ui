@@ -1,4 +1,5 @@
 import ClassCard from "./ClassCard";
+import StatBlock from "./StatBlock";
 
 interface CharacterSheetProps {
   character: {
@@ -49,6 +50,7 @@ const CharacterSheet = ({ character }: CharacterSheetProps) => {
       {character.Class.map((value) => {
         return (
           <ClassCard
+            key={value.Name}
             Name={value.Name}
             SubClass={value.SubClass}
             Level={value.Level}
@@ -56,6 +58,7 @@ const CharacterSheet = ({ character }: CharacterSheetProps) => {
           />
         );
       })}
+      <StatBlock AbilityScores={character.AbilityScores}></StatBlock>
     </div>
   );
 };
