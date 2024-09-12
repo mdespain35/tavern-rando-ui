@@ -1,7 +1,7 @@
 import ClassCard from "./ClassCard";
 import StatBlock from "./StatBlock";
 
-interface CharacterSheetProps {
+export interface CharacterSheetProps {
   character: {
     Race: string;
     Level: number;

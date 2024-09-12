@@ -2,139 +2,67 @@ import { useState } from "react";
 import Button from "./components/Button";
 import "./App.css";
 import CharacterSheet from "./components/CharacterSheet";
+import axios from "axios";
 
 function App() {
-  const [level, setLevel] = useState(0);
+  const [level, setLevel] = useState(1);
   // const [levelDropdown, setLevelDropdown] = useState(false);
   const levelOptions = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
   ];
   const [character, setCharacter] = useState({
-    Race: "Human",
-    Level: 1,
+    Race: "",
+    Level: 0,
     Class: [
       {
-        Name: "Warlock",
-        SubClass: "The Great Old One",
-        Level: 1,
-        HitDie: 8,
+        Name: "",
+        SubClass: "",
+        Level: 0,
+        HitDie: 0,
       },
     ],
     AbilityScores: {
       Charisma: {
-        Score: 9,
-        Modifier: -1,
+        Score: 0,
+        Modifier: 0,
       },
       Constitution: {
-        Score: 12,
-        Modifier: 1,
+        Score: 0,
+        Modifier: 0,
       },
       Dexterity: {
-        Score: 20,
-        Modifier: 5,
+        Score: 0,
+        Modifier: 0,
       },
       Intelligence: {
-        Score: 15,
-        Modifier: 2,
+        Score: 0,
+        Modifier: 0,
       },
       Strength: {
-        Score: 15,
-        Modifier: 2,
+        Score: 0,
+        Modifier: 0,
       },
       Wisdom: {
-        Score: 12,
-        Modifier: 1,
+        Score: 0,
+        Modifier: 0,
       },
     },
-    Hitpoints: 56,
+    Hitpoints: 0,
   });
   const [displayCharacter, setDisplayCharacter] = useState(false);
 
   const onOptimizedClick = () => {
-    setCharacter({
-      Race: "Duergar",
-      Level: 5,
-      Class: [
-        {
-          Name: "Fighter",
-          SubClass: "Eldritch Knight",
-          Level: 5,
-          HitDie: 10,
-        },
-      ],
-      AbilityScores: {
-        Charisma: {
-          Score: 9,
-          Modifier: -1,
-        },
-        Constitution: {
-          Score: 18,
-          Modifier: 4,
-        },
-        Dexterity: {
-          Score: 20,
-          Modifier: 5,
-        },
-        Intelligence: {
-          Score: 15,
-          Modifier: 2,
-        },
-        Strength: {
-          Score: 15,
-          Modifier: 2,
-        },
-        Wisdom: {
-          Score: 12,
-          Modifier: 1,
-        },
-      },
-      Hitpoints: 56,
-    });
-    setDisplayCharacter(true);
-    console.log(level);
+    axios
+      .get("http://localhost:8080/?optimized=true&level=" + level, {})
+      .then((res) => setCharacter(res.data))
+      .then(() => setDisplayCharacter(true));
   };
 
   const onChaosClick = () => {
-    setCharacter({
-      Race: "Harengon",
-      Level: 5,
-      Class: [
-        {
-          Name: "Monk",
-          SubClass: "Way of the Open Hand",
-          Level: 5,
-          HitDie: 8,
-        },
-      ],
-      AbilityScores: {
-        Charisma: {
-          Score: 11,
-          Modifier: 0,
-        },
-        Constitution: {
-          Score: 13,
-          Modifier: 1,
-        },
-        Dexterity: {
-          Score: 14,
-          Modifier: 2,
-        },
-        Intelligence: {
-          Score: 13,
-          Modifier: 1,
-        },
-        Strength: {
-          Score: 14,
-          Modifier: 2,
-        },
-        Wisdom: {
-          Score: 12,
-          Modifier: 1,
-        },
-      },
-      Hitpoints: 26,
-    });
-    setDisplayCharacter(true);
+    axios
+      .get("http://localhost:8080/?optimized=false&level=" + level, {})
+      .then((res) => setCharacter(res.data))
+      .then(() => setDisplayCharacter(true));
   };
 
   return (
@@ -166,11 +94,7 @@ function App() {
         color="danger"
         onClick={() => onChaosClick()}
       ></Button>
-      {displayCharacter ? (
-        <CharacterSheet character={character} />
-      ) : (
-        <p>There is no character</p>
-      )}
+      {displayCharacter && <CharacterSheet character={character} />}
     </>
   );
 }
