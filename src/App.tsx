@@ -75,6 +75,9 @@ function App() {
         className="form-select mb-4 w-25 mx-auto"
         onChange={(event) => setLevel(parseInt(event.target.value))}
       >
+        <option value="0" className="border border-primary" key="default">
+          Select Target Level
+        </option>
         {levelOptions.map((value) => {
           return (
             <option className="border border-primary" key={value} value={value}>
