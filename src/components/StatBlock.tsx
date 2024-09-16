@@ -32,7 +32,7 @@ interface StatBlockProps {
 const StatBlock = ({ AbilityScores }: StatBlockProps) => {
   return (
     <>
-      <p className="h-3">Stat Block</p>
+      <p className="h3">Stat Block</p>
       <div className="border border-dark-subtle p-2 d-flex">
         <AbilityScore
           name="STR"

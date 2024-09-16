@@ -1,7 +1,7 @@
 import ClassCard from "./ClassCard";
 import StatBlock from "./StatBlock";
 
-export interface CharacterSheetProps {
+export type CharacterSheetProps = {
   character: {
     Race: string;
     Level: number;
@@ -39,27 +39,33 @@ export interface CharacterSheetProps {
     };
     Hitpoints: number;
   };
-}
+};
 
 const CharacterSheet = ({ character }: CharacterSheetProps) => {
   return (
-    <div className="border border-dark">
+    <>
       <h1 className="display-4">Character Sheet</h1>
-      <p className="h3">Race: {character.Race}</p>
-      <p className="h3">Level: {character.Level}</p>
-      {character.Class.map((value) => {
-        return (
-          <ClassCard
-            key={value.Name}
-            Name={value.Name}
-            SubClass={value.SubClass}
-            Level={value.Level}
-            HitDie={value.HitDie}
-          />
-        );
-      })}
-      <StatBlock AbilityScores={character.AbilityScores}></StatBlock>
-    </div>
+      <div className="border border-dark">
+        <p className="h3">{character.Race}</p>
+        <p className="h3">Level: {character.Level}</p>
+        <p className="h3">HP: {character.Hitpoints}</p>
+        <p className="h3">{character.Class.length > 1 ? "Classes" : "Class"}</p>
+        <div className="d-flex">
+          {character.Class.map((value) => {
+            return (
+              <ClassCard
+                key={value.Name}
+                Name={value.Name}
+                SubClass={value.SubClass}
+                Level={value.Level}
+                HitDie={value.HitDie}
+              />
+            );
+          })}
+        </div>
+        <StatBlock AbilityScores={character.AbilityScores}></StatBlock>
+      </div>
+    </>
   );
 };
 

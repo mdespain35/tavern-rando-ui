@@ -7,7 +7,7 @@ interface ClassCardProps {
 
 const ClassCard = ({ Name, SubClass, Level, HitDie }: ClassCardProps) => {
   return (
-    <div className="card">
+    <div className="card mx-auto">
       <div className="card-body">
         <h5 className="card-title">{Name}</h5>
         {SubClass.length > 0 && (
