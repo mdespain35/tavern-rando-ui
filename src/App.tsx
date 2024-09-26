@@ -21,6 +21,13 @@ function App() {
         HitDie: 0,
       },
     ],
+    Background: {
+      Name: "",
+      Feature: {
+        Name: "",
+        Description: "",
+      },
+    },
     AbilityScores: {
       Charisma: {
         Score: 0,
@@ -47,7 +54,7 @@ function App() {
         Modifier: 0,
       },
     },
-    Hitpoints: 0,
+    HitPoints: 0,
   });
   const [displayCharacter, setDisplayCharacter] = useState(false);
 

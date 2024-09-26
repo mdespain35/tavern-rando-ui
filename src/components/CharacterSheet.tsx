@@ -1,5 +1,6 @@
 import ClassCard from "./ClassCard";
 import StatBlock from "./StatBlock";
+import BackgroundInfo from "./BackgroundInfo";
 
 export type CharacterSheetProps = {
   character: {
@@ -11,6 +12,13 @@ export type CharacterSheetProps = {
       Level: number;
       HitDie: number;
     }[];
+    Background: {
+      Name: string;
+      Feature: {
+        Name: string;
+        Description: string;
+      };
+    };
     AbilityScores: {
       Charisma: {
         Score: number;
@@ -37,7 +45,7 @@ export type CharacterSheetProps = {
         Modifier: number;
       };
     };
-    Hitpoints: number;
+    HitPoints: number;
   };
 };
 
@@ -49,9 +57,12 @@ const CharacterSheet = ({ character }: CharacterSheetProps) => {
         <p className="display-4">{character.Race}</p>
         <div className="w-50 mx-auto d-flex">
           <p className="h3 w-50 mx-auto">Level: {character.Level}</p>
-          <p className="h3 w-50 mx-auto">HP: {character.Hitpoints}</p>
+          <p className="h3 w-50 mx-auto">HP: {character.HitPoints}</p>
         </div>
-
+        <BackgroundInfo
+          Name={character.Background.Name}
+          Feature={character.Background.Feature}
+        ></BackgroundInfo>
         <div className="w-75 mx-auto mb-3 border border-black pb-3">
           <p className="h3 m-3">
             {character.Class.length > 1 ? "Classes" : "Class"}
