@@ -11,50 +11,50 @@ function App() {
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
   ];
   const [character, setCharacter] = useState({
-    Race: "",
-    Level: 0,
-    Class: [
+    race: "",
+    level: 0,
+    class: [
       {
-        Name: "",
-        SubClass: "",
-        Level: 0,
-        HitDie: 0,
+        name: "",
+        subClass: "",
+        level: 0,
+        hitDie: 0,
       },
     ],
-    Background: {
-      Name: "",
-      Feature: {
-        Name: "",
-        Description: "",
+    background: {
+      name: "",
+      feature: {
+        name: "",
+        description: "",
       },
     },
-    AbilityScores: {
+    abilityScores: {
       Charisma: {
-        Score: 0,
-        Modifier: 0,
+        score: 0,
+        modifier: 0,
       },
       Constitution: {
-        Score: 0,
-        Modifier: 0,
+        score: 0,
+        modifier: 0,
       },
       Dexterity: {
-        Score: 0,
-        Modifier: 0,
+        score: 0,
+        modifier: 0,
       },
       Intelligence: {
-        Score: 0,
-        Modifier: 0,
+        score: 0,
+        modifier: 0,
       },
       Strength: {
-        Score: 0,
-        Modifier: 0,
+        score: 0,
+        modifier: 0,
       },
       Wisdom: {
-        Score: 0,
-        Modifier: 0,
+        score: 0,
+        modifier: 0,
       },
     },
-    HitPoints: 0,
+    hp: 0,
   });
   const [displayCharacter, setDisplayCharacter] = useState(false);
 
